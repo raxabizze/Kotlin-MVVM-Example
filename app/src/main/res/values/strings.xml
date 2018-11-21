@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KotlinMVVMExample</string>
+
+    <string name="api_request_todo">/todo/%1$s</string>
+</resources>
