@@ -8,5 +8,5 @@ import retrofit2.http.Url
 interface PostApi {
 
     @GET
-    fun getPosts(@Url url: String): Observable<List<Post>>
+    fun getPosts(@Url url: String): Observable<ArrayList<Post>>
 }

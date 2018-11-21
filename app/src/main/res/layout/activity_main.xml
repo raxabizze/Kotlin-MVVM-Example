@@ -3,38 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<data>
 
-    <variable
-        name="view"
-        type="com.example.raxabizze.kotlinmvvmexample.ui.login.LoginContract.View"/>
+    <data>
 
-    <variable
-        name="repository"
-        type="com.example.raxabizze.kotlinmvvmexample.model.Repository"/>
-</data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.example.raxabizze.kotlinmvvmexample.ui.main.MainViewModel"/>
+    </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{repository.status}"
-            android:textSize="50sp"
-            android:textColor="@android:color/black"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+        android:layout_height="match_parent"
+        tools:context="me.mladenrakonjac.modernandroidapp.ui.screens.main.MainActivity">
 
         <ProgressBar
             android:id="@+id/loading"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:indeterminate="true"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@+id/refresh_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,26 +34,43 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:indeterminate="true"
+            android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toTopOf="@+id/refresh_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_login" />
-
+            tools:listitem="@layout/item_main" />
 
 
         <Button
             android:id="@+id/refresh_button"
             android:layout_width="160dp"
             android:layout_height="40dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="@{() -> view.onLoadDataClick()}"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="@{viewModel.isLoading ? false : true}"
+            android:onClick="@{() -> viewModel.onLoadPost()}"
             android:text="Load Data"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/start_activity_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/start_activity_button"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="@{viewModel.isLoading ? false : true}"
+            android:onClick="@{() -> viewModel.onStartActivityClick()}"
+            android:text="Start Activity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/refresh_button"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />

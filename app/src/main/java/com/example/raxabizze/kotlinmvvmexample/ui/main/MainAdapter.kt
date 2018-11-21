@@ -1,18 +1,18 @@
-package com.example.raxabizze.kotlinmvvmexample.ui.login
+package com.example.raxabizze.kotlinmvvmexample.ui.main
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.raxabizze.kotlinmvvmexample.databinding.ItemLoginBinding
+import com.example.raxabizze.kotlinmvvmexample.databinding.ItemMainBinding
 import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 
-class LoginAdapter(private var items: List<Post>,
-                   private var listener: LoginContract.View.OnItemClickListener)
-    : RecyclerView.Adapter<LoginAdapter.ViewHolder>(), LoginContract.Adapter {
+class MainAdapter(private var items: List<Post>,
+                  private var listener: MainContract.View.OnItemClickListener)
+    : RecyclerView.Adapter<MainAdapter.ViewHolder>(), MainContract.Adapter {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemLoginBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemMainBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
     }
 
@@ -26,10 +26,10 @@ class LoginAdapter(private var items: List<Post>,
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private var binding: ItemLoginBinding) :
+    class ViewHolder(private var binding: ItemMainBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(post: Post, listener: LoginContract.View.OnItemClickListener?) {
+        fun bind(post: Post, listener: MainContract.View.OnItemClickListener?) {
             binding.post = post
             if (listener != null) {
                 binding.root.setOnClickListener { _ -> listener.onItemClick(layoutPosition) }
