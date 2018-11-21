@@ -6,6 +6,7 @@
 3. Rxjava2 
 4. Databinding 
 5. OK HTTP 
+6. LiveData
 
 ## WeakReference or LiveData ?
 1. [MVVM pattern and startActivity](https://stackoverflow.com/a/46827625)
