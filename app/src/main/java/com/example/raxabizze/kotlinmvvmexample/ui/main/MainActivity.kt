@@ -12,6 +12,7 @@ import com.example.raxabizze.kotlinmvvmexample.core.ActivityLauncher
 import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 import com.example.raxabizze.kotlinmvvmexample.utils.factory.AppViewModelFactory
 import com.example.raxabizze.kotlinmvvmexample.utils.toast
+import io.reactivex.Single
 import javax.inject.Inject
 import com.example.raxabizze.kotlinmvvmexample.databinding.ActivityMainBinding as Binding
 
@@ -19,6 +20,7 @@ class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnIte
     lateinit var binding: Binding
 
     private val mAdapter = MainAdapter(arrayListOf(), this)
+
     @Inject
     lateinit var viewModelFactory: AppViewModelFactory
 

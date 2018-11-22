@@ -4,14 +4,18 @@ import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableField
 import android.util.Log
 import com.example.raxabizze.kotlinmvvmexample.base.BaseViewModel
+import com.example.raxabizze.kotlinmvvmexample.room.Posts
+import com.example.raxabizze.kotlinmvvmexample.room.PostsDao
 import com.example.raxabizze.kotlinmvvmexample.utils.SingleLiveData
 import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
+import io.reactivex.Single
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableObserver
 import plusAssign
+import java.util.concurrent.Executors
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor() : BaseViewModel<MainContract.View>() {
+class MainViewModel @Inject constructor(var mPostsDao: PostsDao) : BaseViewModel<MainContract.View>() {
 
     val text = ObservableField("old data")
 
@@ -21,42 +25,38 @@ class MainViewModel @Inject constructor() : BaseViewModel<MainContract.View>() {
 
     val uiEventLiveData: MutableLiveData<Int> = SingleLiveData()
 
+    init {
+        Thread(Runnable { getData() }).start()
+    }
+
     fun onLoadPost() {
 
-        /** Retrofit method 1 **/
         isLoading.set(true)
         mCompositeDisposable += mPostApi.getPosts("/todos/")
                 .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui())
-                .subscribeWith(object : DisposableObserver<ArrayList<Post>>() {
-
-                    override fun onNext(@NonNull mDataList: ArrayList<Post>) {
-                        repositories.value = mDataList
-                    }
-
-                    override fun onError(@NonNull e: Throwable) {
-                        Log.e("error", e.message)
-                    }
-
-                    override fun onComplete() {
-                        isLoading.set(false)
-                    }
-                })
-
-
-        /** Retrofit method 2
-        mCompositeDisposable += mPostApi.getPosts("/todos/")
-            .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
-            .subscribe(
-                { getView()?.onLoadDataSuccess(it) },
-                { getView()?.onLoadDataFailure() }
-            )
-         **/
+                .observeOn(schedulerProvider.io())
+                .subscribe(
+                        { it.map { mPostsDao.insertPosts(Posts(it.userId, it.id, it.title)) } },
+                        { getData() },
+                        { getData() }
+                )
     }
 
+    fun getData() {
 
+        isLoading.set(false)
 
+        val dataList = ArrayList<Post>(
+            mPostsDao.allPosts.map {
+                return@map Post(it.userId, it.id, it.title, it.title)
+            })
+
+        repositories.postValue(dataList)
+    }
+
+    
+    
+    
     // WeakReference or LiveData => https://stackoverflow.com/a/46827625
 
     /** Start Activity method 1 => WeakReference **/

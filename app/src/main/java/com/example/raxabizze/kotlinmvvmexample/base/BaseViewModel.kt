@@ -9,18 +9,14 @@ import javax.inject.Inject
 
 abstract class BaseViewModel<N> : ViewModel() {
 
+    @Inject
     lateinit var schedulerProvider : SchedulerProvider
 
+    @Inject
     lateinit var mCompositeDisposable: CompositeDisposable
 
-    lateinit var mPostApi: PostApi
-
     @Inject
-    fun BaseViewModel(mCompositeDisposable: CompositeDisposable, schedulerProvider: SchedulerProvider, mPostApi: PostApi){
-        this.mCompositeDisposable = mCompositeDisposable
-        this.schedulerProvider = schedulerProvider
-        this.mPostApi = mPostApi
-    }
+    lateinit var mPostApi: PostApi
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
