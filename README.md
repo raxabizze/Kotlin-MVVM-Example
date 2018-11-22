@@ -7,6 +7,7 @@
 4. Databinding 
 5. OK HTTP 
 6. LiveData
+7. Room
 
 ## WeakReference or LiveData ?
 1. [MVVM pattern and startActivity](https://stackoverflow.com/a/46827625)
