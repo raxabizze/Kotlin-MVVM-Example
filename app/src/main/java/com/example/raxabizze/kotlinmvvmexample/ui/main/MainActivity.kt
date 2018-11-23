@@ -9,6 +9,7 @@ import android.util.Log
 import com.example.raxabizze.kotlinmvvmexample.R
 import com.example.raxabizze.kotlinmvvmexample.base.BaseActivity
 import com.example.raxabizze.kotlinmvvmexample.core.ActivityLauncher
+import com.example.raxabizze.kotlinmvvmexample.room.Posts
 import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 import com.example.raxabizze.kotlinmvvmexample.utils.factory.AppViewModelFactory
 import com.example.raxabizze.kotlinmvvmexample.utils.toast
@@ -45,7 +46,7 @@ class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnIte
         }
 
         viewModel.repositories.observe(this,
-                Observer<ArrayList<Post>> { it?.let { mAdapter.replaceData(it) } })
+                Observer<List<Posts>> { it?.let { mAdapter.replaceData(it) } })
 
         viewModel.uiEventLiveData.observe(this, Observer {
             when (it) {
@@ -53,6 +54,8 @@ class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnIte
                 2 -> {  }
             }
         })
+
+        viewModel.getData()
     }
 
     override fun onItemClick(position: Int) {

@@ -21,13 +21,9 @@ class MainViewModel @Inject constructor(var mPostsDao: PostsDao) : BaseViewModel
 
     val isLoading = ObservableField(false)
 
-    var repositories = MutableLiveData<ArrayList<Post>>()
+    var repositories = MutableLiveData<List<Posts>>()
 
     val uiEventLiveData: MutableLiveData<Int> = SingleLiveData()
-
-    init {
-        Thread(Runnable { getData() }).start()
-    }
 
     fun onLoadPost() {
 
@@ -46,13 +42,11 @@ class MainViewModel @Inject constructor(var mPostsDao: PostsDao) : BaseViewModel
 
         isLoading.set(false)
 
-        val dataList = ArrayList<Post>(
-            mPostsDao.allPosts.map {
-                return@map Post(it.userId, it.id, it.title, it.title)
-            })
-
-        repositories.postValue(dataList)
+        mCompositeDisposable += mPostsDao.allPosts
+                .observeOn(schedulerProvider.ui())
+                .subscribe { repositories.value = (it) }
     }
+
 
     
     

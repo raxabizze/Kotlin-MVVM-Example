@@ -1,13 +1,14 @@
 package com.example.raxabizze.kotlinmvvmexample.room
 
 import android.arch.persistence.room.*
+import io.reactivex.Flowable
 
 
 @Dao
 interface PostsDao {
 
     @get:Query("SELECT * FROM posts_table")
-    val allPosts: List<Posts>
+    val allPosts: Flowable<List<Posts>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPosts(vararg postss: Posts)

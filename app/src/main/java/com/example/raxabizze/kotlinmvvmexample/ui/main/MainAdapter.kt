@@ -4,9 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.raxabizze.kotlinmvvmexample.databinding.ItemMainBinding
+import com.example.raxabizze.kotlinmvvmexample.room.Posts
 import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 
-class MainAdapter(private var items: List<Post>,
+class MainAdapter(private var items: List<Posts>,
                   private var listener: MainContract.View.OnItemClickListener)
     : RecyclerView.Adapter<MainAdapter.ViewHolder>(), MainContract.Adapter {
 
@@ -21,7 +22,7 @@ class MainAdapter(private var items: List<Post>,
 
     override fun getItemCount(): Int = items.size
 
-    override fun replaceData(mDataList: List<Post>) {
+    override fun replaceData(mDataList: List<Posts>) {
         items = mDataList
         notifyDataSetChanged()
     }
@@ -29,7 +30,8 @@ class MainAdapter(private var items: List<Post>,
     class ViewHolder(private var binding: ItemMainBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(post: Post, listener: MainContract.View.OnItemClickListener?) {
+        fun bind(posts: Posts, listener: MainContract.View.OnItemClickListener?) {
+            var post = Post(posts.keyid, posts.title, posts.id, posts.userId.toString())
             binding.post = post
             if (listener != null) {
                 binding.root.setOnClickListener { _ -> listener.onItemClick(layoutPosition) }

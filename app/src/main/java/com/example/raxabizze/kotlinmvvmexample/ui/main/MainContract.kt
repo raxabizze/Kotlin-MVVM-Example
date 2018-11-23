@@ -1,6 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.ui.main
 
 import com.example.raxabizze.kotlinmvvmexample.base.BaseView
+import com.example.raxabizze.kotlinmvvmexample.room.Posts
 import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 
 interface MainContract {
@@ -15,6 +16,6 @@ interface MainContract {
     }
 
     interface Adapter {
-        fun replaceData(mDataList: List<Post>)
+        fun replaceData(mDataList: List<Posts>)
     }
 }
