@@ -5,15 +5,12 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import com.example.raxabizze.kotlinmvvmexample.R
 import com.example.raxabizze.kotlinmvvmexample.base.BaseActivity
 import com.example.raxabizze.kotlinmvvmexample.core.ActivityLauncher
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
-import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 import com.example.raxabizze.kotlinmvvmexample.utils.factory.AppViewModelFactory
 import com.example.raxabizze.kotlinmvvmexample.utils.toast
-import io.reactivex.Single
 import javax.inject.Inject
 import com.example.raxabizze.kotlinmvvmexample.databinding.ActivityMainBinding as Binding
 

@@ -2,7 +2,6 @@ package com.example.raxabizze.kotlinmvvmexample.ui.main
 
 import com.example.raxabizze.kotlinmvvmexample.base.BaseView
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
-import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 
 interface MainContract {
 

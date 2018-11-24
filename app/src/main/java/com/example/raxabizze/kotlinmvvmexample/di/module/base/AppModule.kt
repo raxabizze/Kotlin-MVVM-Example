@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room
 import android.content.Context
 import com.example.raxabizze.kotlinmvvmexample.App
 import com.example.raxabizze.kotlinmvvmexample.room.AppDatabase
+import com.example.raxabizze.kotlinmvvmexample.room.AppDatabase.Companion.MIGRATION_1_2
 import com.example.raxabizze.kotlinmvvmexample.utils.rxjava.scheduler.SchedulerProvider
 import com.example.raxabizze.kotlinmvvmexample.utils.rxjava.scheduler.SchedulerProviderImp
 import dagger.Module
@@ -27,7 +28,7 @@ class AppModule
 
     @Singleton
     @Provides fun providesAppDatabase(app : App): AppDatabase =
-            Room.databaseBuilder(app, AppDatabase::class.java, "posts-db").build()
+            Room.databaseBuilder(app, AppDatabase::class.java, "posts-db").addMigrations(MIGRATION_1_2).build()
 
     @Singleton
     @Provides fun providesToDoDao(database: AppDatabase) = database.postsDao()

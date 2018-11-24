@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.raxabizze.kotlinmvvmexample.databinding.ItemMainBinding
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
-import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
 
 class MainAdapter(private var items: List<Posts>,
                   private var listener: MainContract.View.OnItemClickListener)
@@ -31,8 +30,7 @@ class MainAdapter(private var items: List<Posts>,
             RecyclerView.ViewHolder(binding.root) {
 
         fun bind(posts: Posts, listener: MainContract.View.OnItemClickListener?) {
-            var post = Post(posts.keyid, posts.title, posts.id, posts.userId.toString())
-            binding.post = post
+            binding.posts = posts
             if (listener != null) {
                 binding.root.setOnClickListener { _ -> listener.onItemClick(layoutPosition) }
             }

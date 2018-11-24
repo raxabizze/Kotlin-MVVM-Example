@@ -2,17 +2,11 @@ package com.example.raxabizze.kotlinmvvmexample.ui.main
 
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableField
-import android.util.Log
 import com.example.raxabizze.kotlinmvvmexample.base.BaseViewModel
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
 import com.example.raxabizze.kotlinmvvmexample.room.PostsDao
 import com.example.raxabizze.kotlinmvvmexample.utils.SingleLiveData
-import com.example.raxabizze.kotlinmvvmexample.utils.api.pojo.post.Post
-import io.reactivex.Single
-import io.reactivex.annotations.NonNull
-import io.reactivex.observers.DisposableObserver
 import plusAssign
-import java.util.concurrent.Executors
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(var mPostsDao: PostsDao) : BaseViewModel<MainContract.View>() {
@@ -31,11 +25,8 @@ class MainViewModel @Inject constructor(var mPostsDao: PostsDao) : BaseViewModel
         mCompositeDisposable += mPostApi.getPosts("/todos/")
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.io())
-                .subscribe(
-                        { it.map { mPostsDao.insertPosts(Posts(it.userId, it.id, it.title)) } },
-                        { getData() },
-                        { getData() }
-                )
+                .doOnTerminate { getData() }
+                .subscribe { mPostsDao.insertPosts(*it.toTypedArray()) }
     }
 
     fun getData() {
