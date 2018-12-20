@@ -18,4 +18,4 @@
 ## Reference resource:
 1. [ModernAndroidApp](https://github.com/mladenrakonjac/ModernAndroidApp)
 2. [MVVMPosts](https://github.com/gahfy/MVVMPosts)
-
+3. [How to apply Dagger injection into services?](https://github.com/googlesamples/android-architecture-components/issues/253#issuecomment-352210847)
