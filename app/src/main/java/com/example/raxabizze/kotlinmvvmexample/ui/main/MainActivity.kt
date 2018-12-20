@@ -2,6 +2,7 @@ package com.example.raxabizze.kotlinmvvmexample.ui.main
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,6 +10,8 @@ import com.example.raxabizze.kotlinmvvmexample.R
 import com.example.raxabizze.kotlinmvvmexample.base.BaseActivity
 import com.example.raxabizze.kotlinmvvmexample.core.ActivityLauncher
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
+import com.example.raxabizze.kotlinmvvmexample.service.MainIntentService
+import com.example.raxabizze.kotlinmvvmexample.service.MainIntentService.Companion.ACTION_FOO
 import com.example.raxabizze.kotlinmvvmexample.utils.factory.AppViewModelFactory
 import com.example.raxabizze.kotlinmvvmexample.utils.toast
 import javax.inject.Inject
@@ -28,6 +31,7 @@ class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnIte
         super.onCreate(savedInstanceState)
 
         onSetUp()
+        onStartService()
     }
 
     private fun onSetUp() {
@@ -53,6 +57,14 @@ class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnIte
         })
 
         viewModel.getData()
+    }
+
+    private fun onStartService() {
+        val intent = Intent(this, MainIntentService::class.java)
+        intent.action = ACTION_FOO
+        intent.putExtra(MainIntentService.EXTRA_PARAM1, "EXTRA_PARAM1")
+        intent.putExtra(MainIntentService.EXTRA_PARAM2, "EXTRA_PARAM2")
+        startService(intent)
     }
 
     override fun onItemClick(position: Int) {

@@ -15,6 +15,7 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         AndroidSupportInjectionModule::class,  //remove this line when add a fragment
         ActivityBuilder::class,
+        ServiceBuilderModule::class,
         FragmentBuilder::class,
         ViewModelModule::class))
 interface AppComponent {

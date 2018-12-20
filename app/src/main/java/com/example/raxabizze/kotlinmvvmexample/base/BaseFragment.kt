@@ -1,23 +1,10 @@
 package com.example.raxabizze.kotlinmvvmexample.base
 
-import android.support.v4.app.Fragment
-import android.os.Bundle
 import android.support.annotation.StringRes
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.DaggerFragment
 
 
-abstract class BaseFragment : BaseView, Fragment() {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        AndroidSupportInjection.inject(this)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+abstract class BaseFragment : BaseView, DaggerFragment() {
 
     override fun showProgressDialog(@StringRes text: Int) {
 
