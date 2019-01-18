@@ -1,6 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.base
 
 import android.arch.lifecycle.ViewModel
+import com.example.raxabizze.kotlinmvvmexample.di.module.base.ResourceProvider
 import com.example.raxabizze.kotlinmvvmexample.utils.api.PostApi
 import com.example.raxabizze.kotlinmvvmexample.utils.rxjava.scheduler.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -8,6 +9,10 @@ import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 abstract class BaseViewModel<N> : ViewModel() {
+
+
+    @Inject
+    lateinit var mResourceProvider: ResourceProvider
 
     @Inject
     lateinit var schedulerProvider : SchedulerProvider

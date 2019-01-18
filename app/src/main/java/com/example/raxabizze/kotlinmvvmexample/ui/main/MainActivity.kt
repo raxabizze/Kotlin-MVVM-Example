@@ -22,9 +22,6 @@ class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnIte
 
     private val mAdapter = MainAdapter(arrayListOf(), this)
 
-    @Inject
-    lateinit var viewModelFactory: AppViewModelFactory
-
     private val viewModel by lazy { ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
