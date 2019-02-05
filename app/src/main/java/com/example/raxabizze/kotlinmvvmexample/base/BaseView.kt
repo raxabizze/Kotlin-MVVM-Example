@@ -1,6 +1,6 @@
 package com.example.raxabizze.kotlinmvvmexample.base
 
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 
 interface BaseView {
 

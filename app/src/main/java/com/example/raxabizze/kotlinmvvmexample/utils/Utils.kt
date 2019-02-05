@@ -1,13 +1,11 @@
 package com.example.raxabizze.kotlinmvvmexample.utils
 
-import android.support.annotation.NonNull
-import android.support.v7.widget.Toolbar
-import android.view.ViewGroup
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
-import android.view.View.FIND_VIEWS_WITH_TEXT
-
+import androidx.annotation.NonNull
+import androidx.appcompat.widget.Toolbar
 
 
 class Utils {

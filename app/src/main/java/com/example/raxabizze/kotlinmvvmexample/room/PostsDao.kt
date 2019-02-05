@@ -1,6 +1,6 @@
 package com.example.raxabizze.kotlinmvvmexample.room
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import io.reactivex.Flowable
 
 

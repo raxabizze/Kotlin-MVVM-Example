@@ -1,7 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.base
 
-import android.support.annotation.StringRes
 import android.widget.Toast
+import androidx.annotation.StringRes
 import dagger.android.support.DaggerFragment
 
 

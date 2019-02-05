@@ -1,20 +1,18 @@
 package com.example.raxabizze.kotlinmvvmexample.ui.main
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.raxabizze.kotlinmvvmexample.R
 import com.example.raxabizze.kotlinmvvmexample.base.BaseActivity
 import com.example.raxabizze.kotlinmvvmexample.core.ActivityLauncher
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
 import com.example.raxabizze.kotlinmvvmexample.service.MainIntentService
 import com.example.raxabizze.kotlinmvvmexample.service.MainIntentService.Companion.ACTION_FOO
-import com.example.raxabizze.kotlinmvvmexample.utils.factory.AppViewModelFactory
 import com.example.raxabizze.kotlinmvvmexample.utils.toast
-import javax.inject.Inject
 import com.example.raxabizze.kotlinmvvmexample.databinding.ActivityMainBinding as Binding
 
 class MainActivity :  BaseActivity(), MainContract.View, MainContract.View.OnItemClickListener {

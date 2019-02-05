@@ -1,8 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.utils
 
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
-import com.android.databinding.library.baseAdapters.BR
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
 class ViewHolder<B : ViewDataBinding>(private val mViewDataBinding: B) : RecyclerView.ViewHolder(mViewDataBinding.root) {
 

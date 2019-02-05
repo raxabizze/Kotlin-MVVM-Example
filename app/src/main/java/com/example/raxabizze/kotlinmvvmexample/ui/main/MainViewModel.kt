@@ -1,7 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.ui.main
 
-import android.arch.lifecycle.MutableLiveData
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import com.example.raxabizze.kotlinmvvmexample.base.BaseViewModel
 import com.example.raxabizze.kotlinmvvmexample.room.Posts
 import com.example.raxabizze.kotlinmvvmexample.room.PostsDao

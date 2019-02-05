@@ -1,6 +1,6 @@
 package com.example.raxabizze.kotlinmvvmexample.base
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.example.raxabizze.kotlinmvvmexample.di.module.base.ResourceProvider
 import com.example.raxabizze.kotlinmvvmexample.utils.api.PostApi
 import com.example.raxabizze.kotlinmvvmexample.utils.rxjava.scheduler.SchedulerProvider

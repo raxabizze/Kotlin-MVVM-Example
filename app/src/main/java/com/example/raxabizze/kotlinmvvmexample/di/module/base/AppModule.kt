@@ -1,7 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.di.module.base
 
-import android.arch.persistence.room.Room
 import android.content.Context
+import androidx.room.Room
 import com.example.raxabizze.kotlinmvvmexample.App
 import com.example.raxabizze.kotlinmvvmexample.room.AppDatabase
 import com.example.raxabizze.kotlinmvvmexample.room.AppDatabase.Companion.MIGRATION_1_2

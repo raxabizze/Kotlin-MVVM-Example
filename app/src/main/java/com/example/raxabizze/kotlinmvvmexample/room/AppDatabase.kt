@@ -1,10 +1,10 @@
 package com.example.raxabizze.kotlinmvvmexample.room
 
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.Database
-import android.arch.persistence.db.SupportSQLiteDatabase
-import android.arch.persistence.room.migration.Migration
-import android.support.annotation.NonNull
+import androidx.annotation.NonNull
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 
 @Database(entities = arrayOf(Posts::class), version = 2, exportSchema = false)

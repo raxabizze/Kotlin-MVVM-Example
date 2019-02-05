@@ -1,16 +1,23 @@
 package com.example.raxabizze.kotlinmvvmexample.room
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "posts_table")
-data class Posts(@ColumnInfo(name = "userId") var userId: Int = -1,
-                 @ColumnInfo(name = "id") var id: String = "",
-                 @ColumnInfo(name = "title") var title: String = "",
-                 @ColumnInfo(name = "body") var body: String = "") {
+data class Posts(@PrimaryKey(autoGenerate = true) var keyId: Int? = 0) : Serializable {
 
-    @ColumnInfo(name = "keyid")
-    @PrimaryKey(autoGenerate = true) var keyid: Int = 0
+    @ColumnInfo(name = "userId") var userId: Int = -1
+
+    @ColumnInfo(name = "id") var id: String = ""
+
+    @ColumnInfo(name = "title") var title: String = ""
+
+    @ColumnInfo(name = "body") var body: String = ""
+
+    @Ignore
+    constructor() : this(null)
 }

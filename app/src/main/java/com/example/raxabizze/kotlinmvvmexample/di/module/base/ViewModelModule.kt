@@ -1,7 +1,7 @@
 package com.example.raxabizze.kotlinmvvmexample.di.module.base
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.raxabizze.kotlinmvvmexample.di.annotation.base.ViewModelKey
 import com.example.raxabizze.kotlinmvvmexample.ui.main.MainViewModel
 import com.example.raxabizze.kotlinmvvmexample.utils.factory.AppViewModelFactory
