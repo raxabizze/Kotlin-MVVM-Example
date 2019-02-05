@@ -1,4 +1,4 @@
-# Sample App : Android Kotlin MVP Architecture
+# Sample App : Android Kotlin MVVM Architecture
 
 ### Library reference :
 1. Retrofit2 
